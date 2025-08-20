@@ -117,7 +117,7 @@ button:hover { background:#ff5c8a; } button:active { transform: scale(0.98); }
       </div>
       <div>
         <button class="dodge" id="thinkBtn">Socha parega</button>
-        <button id="yesFinalBtn">YESSSSSS Baby 🤍</button>
+        <button onclick="finalLove()">YESSSSSS Baby 🤍</button>
       </div>
     </div>
   </section>
@@ -135,7 +135,7 @@ function nextSlide(n){
   document.getElementById("slide"+n).classList.add("active");
   currentSlide=n;
 }
-document.getElementById("playSongBtn").addEventListener("click", ()=>{
+document.getElementById("playSongBtn").addEventListener("click", ()=> {
   bgSong.play().catch(()=>{});
   document.getElementById("playSongBtn").style.display="none";
   document.getElementById("okBtn").style.display="inline-block";
@@ -196,33 +196,36 @@ function startHearts(){
   heartsContainer.style.display='block';
   heartInterval=setInterval(createHeart,400);
 }
-
-// Final love button (slide 6)
-document.getElementById("yesFinalBtn").addEventListener("click", ()=>{
+function finalLove(){
   startHearts();
   const c=document.querySelector('#slide6 .content');
   c.insertAdjacentHTML('beforeend',`<h2>Hey Boyfie...I love you my KHARUS ❤️</h2>`);
   setTimeout(()=>{alert("YAYYYY! Love you forever! ❤️");},3000);
-});
+}
 
 // Desktop dodge hover effect only
 function handleDodgeHover(e){
   if(window.innerWidth>768){
     document.querySelectorAll(".dodge").forEach(btn=>{
-      const rect=btn.getBoundingClientRect();
-      const dx=e.clientX-(rect.left+rect.width/2);
-      const dy=e.clientY-(rect.top+rect.height/2);
-      if(Math.abs(dx)<100 && Math.abs(dy)<80){
-        const newLeft=Math.random()*(window.innerWidth-rect.width);
-        const newTop=Math.random()*(window.innerHeight-rect.height);
-        btn.style.position="fixed";
-        btn.style.left=newLeft+"px";
-        btn.style.top=newTop+"px";
+      const rect = btn.getBoundingClientRect();
+      const dx = e.clientX - (rect.left + rect.width/2);
+      const dy = e.clientY - (rect.top + rect.height/2);
+      if(Math.abs(dx) < 100 && Math.abs(dy) < 80){
+        const newLeft = Math.random() * (window.innerWidth - rect.width);
+        const newTop = Math.random() * (window.innerHeight - rect.height);
+        btn.style.position = "fixed";
+        btn.style.left = newLeft + "px";
+        btn.style.top = newTop + "px";
       }
     });
   }
 }
 document.addEventListener("mousemove", handleDodgeHover);
+
+// Dodge buttons do nothing on click
+document.querySelectorAll(".dodge").forEach(btn=>{
+  btn.addEventListener("click",(e)=>{ e.preventDefault(); });
+});
 </script>
 </body>
 </html>

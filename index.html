@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -117,7 +118,7 @@ button:hover { background:#ff5c8a; } button:active { transform: scale(0.98); }
       </div>
       <div>
         <button class="dodge" id="thinkBtn">Socha parega</button>
-        <button onclick="finalLove()">YESSSSSS Baby 🤍</button>
+        <button id="yesFinalBtn">YESSSSSS Baby 🤍</button>
       </div>
     </div>
   </section>
@@ -130,16 +131,19 @@ button:hover { background:#ff5c8a; } button:active { transform: scale(0.98); }
 <script>
 let currentSlide = 1;
 const bgSong = document.getElementById("bgSong");
+
 function nextSlide(n){
   document.getElementById("slide"+currentSlide).classList.remove("active");
   document.getElementById("slide"+n).classList.add("active");
   currentSlide=n;
 }
-document.getElementById("playSongBtn").addEventListener("click", ()=> {
+
+document.getElementById("playSongBtn").addEventListener("click", ()=>{
   bgSong.play().catch(()=>{});
   document.getElementById("playSongBtn").style.display="none";
   document.getElementById("okBtn").style.display="inline-block";
 });
+
 function heartsPage(){
   document.getElementById("slide3").innerHTML = `
   <div class="content">
@@ -148,7 +152,9 @@ function heartsPage(){
     <button onclick="nextSlide(4)">Hanji kachua 🐢..Bolo</button>
   </div>`;
 }
+
 function sorryLine(){ nextSlide(4); }
+
 function bhagOption(){
   document.getElementById("slide4").innerHTML = `
   <div class="content">
@@ -156,6 +162,7 @@ function bhagOption(){
     <button onclick="nextSlide(5)">Sorry I love you jaan 😝🤍</button>
   </div>`;
 }
+
 function yesLine(){
   alert("I KNEW IT!! 😎❤️");
   document.getElementById("slide5").innerHTML = `
@@ -168,6 +175,7 @@ function yesLine(){
     </div>
   </div>`;
 }
+
 function extraPage(){
   document.getElementById("slide5").innerHTML = `
   <div class="content">
@@ -196,6 +204,7 @@ function startHearts(){
   heartsContainer.style.display='block';
   heartInterval=setInterval(createHeart,400);
 }
+
 function finalLove(){
   startHearts();
   const c=document.querySelector('#slide6 .content');
@@ -222,10 +231,8 @@ function handleDodgeHover(e){
 }
 document.addEventListener("mousemove", handleDodgeHover);
 
-// Dodge buttons do nothing on click
-document.querySelectorAll(".dodge").forEach(btn=>{
-  btn.addEventListener("click",(e)=>{ e.preventDefault(); });
-});
+// Only show heart animation & "Hey Boyfie..." after clicking YESSSSS Baby
+document.getElementById("yesFinalBtn").addEventListener("click", finalLove);
 </script>
 </body>
 </html>

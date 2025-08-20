@@ -55,15 +55,20 @@
       pointer-events: none;
     }
 
-    /* Heart and love background for Slide 0 */
+     /* Heart and love background for Slide 0 */
     #slide0::before {
-      background: 
-        radial-gradient(circle at center, #ff3366 0%, #ff6688 60%, #ff99aa 100%);
-      background-repeat: no-repeat;
-      background-size: cover;
-      z-index: -2;
-      pointer-events: none;
-    }
+  content: "";
+  position: absolute; inset: 0;
+  background-image: url('https://cliply.co/wp-content/uploads/2020/01/402001940_HEARTS_BG_400px.gif');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 100;
+  z-index: 0;
+  pointer-events: none;
+}
+
+
 
     /* Existing slide backgrounds */
     #slide1::before { background-image: url('https://media1.tenor.com/m/1jKnE-r5T-EAAAAd/milk-and-mocha-bears-sad.gif'); }

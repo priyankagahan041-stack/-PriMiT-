@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -222,15 +220,18 @@ function handleDodgeHover(e){
     });
   }
 }
-document.addEventListener("mousemove", handleDodgeHover);
 
-// Dodge buttons do nothing on click
+// Dodge buttons do nothing on mobile/touch
 document.querySelectorAll(".dodge").forEach(btn=>{
-  btn.addEventListener("click",(e)=>{ e.preventDefault(); });
+  btn.addEventListener("click",(e)=>{
+    if(('ontouchstart' in window) || navigator.maxTouchPoints){
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  });
 });
+
+document.addEventListener("mousemove", handleDodgeHover);
 </script>
 </body>
 </html>
-
-
-in this code take the code of nahh button

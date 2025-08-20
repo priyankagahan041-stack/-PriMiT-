@@ -135,7 +135,7 @@ function nextSlide(n){
   document.getElementById("slide"+n).classList.add("active");
   currentSlide=n;
 }
-document.getElementById("playSongBtn").addEventListener("click", ()=>{
+document.getElementById("playSongBtn").addEventListener("click", ()=> {
   bgSong.play().catch(()=>{});
   document.getElementById("playSongBtn").style.display="none";
   document.getElementById("okBtn").style.display="inline-block";
@@ -157,7 +157,6 @@ function bhagOption(){
   </div>`;
 }
 function yesLine(){
-  // Only after clicking this button
   alert("I KNEW IT!! 😎❤️");
   document.getElementById("slide5").innerHTML = `
   <div class="content">
@@ -222,6 +221,11 @@ function handleDodgeHover(e){
   }
 }
 document.addEventListener("mousemove", handleDodgeHover);
+
+// Dodge buttons do nothing on click
+document.querySelectorAll(".dodge").forEach(btn=>{
+  btn.addEventListener("click",(e)=>{ e.preventDefault(); });
+});
 </script>
 </body>
 </html>

@@ -203,32 +203,29 @@ function finalLove(){
   setTimeout(()=>{alert("YAYYYY! Love you forever! ❤️");},3000);
 }
 
-// Dodge buttons do nothing on click (mobile & click)
-document.querySelectorAll(".dodge").forEach(btn=>{
-  btn.addEventListener("click",(e)=>{
-    e.preventDefault();
-    e.stopPropagation();
-  });
-});
-
 // Desktop dodge hover effect only
 function handleDodgeHover(e){
   if(window.innerWidth>768){
     document.querySelectorAll(".dodge").forEach(btn=>{
-      const rect = btn.getBoundingClientRect();
-      const dx = e.clientX - (rect.left + rect.width/2);
-      const dy = e.clientY - (rect.top + rect.height/2);
+      const rect=btn.getBoundingClientRect();
+      const dx=e.clientX-(rect.left+rect.width/2);
+      const dy=e.clientY-(rect.top+rect.height/2);
       if(Math.abs(dx)<100 && Math.abs(dy)<80){
-        const newLeft = Math.random()*(window.innerWidth-rect.width);
-        const newTop = Math.random()*(window.innerHeight-rect.height);
-        btn.style.position = "fixed";
-        btn.style.left = newLeft+"px";
-        btn.style.top = newTop+"px";
+        const newLeft=Math.random()*(window.innerWidth-rect.width);
+        const newTop=Math.random()*(window.innerHeight-rect.height);
+        btn.style.position="fixed";
+        btn.style.left=newLeft+"px";
+        btn.style.top=newTop+"px";
       }
     });
   }
 }
 document.addEventListener("mousemove", handleDodgeHover);
+
+// Dodge buttons do nothing on click
+document.querySelectorAll(".dodge").forEach(btn=>{
+  btn.addEventListener("click",(e)=>{ e.preventDefault(); });
+});
 </script>
 </body>
 </html>
